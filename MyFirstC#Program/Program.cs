@@ -135,15 +135,31 @@ int[,] map = { { 1, 2, 3 }, { 4, 5, 6 } };
 /* Class 
 using MyFirstC_Program;
 Messages.Hello();
-*/
 
 Human h1 = new("Alice", 16);
-Human h2 = new("John", 16);
-h1.Eat();
-h2.Sleep();
+Developer h2 = new("John", 46);
+h1.Eat(); 
+h2.Code();
 Console.WriteLine("Population: " + Human.population);
 
+*/
+
+/* Interface 
+IMovable myCar = new Car();
+IMovable myBike = new Bicycle();
+myCar.Move();
+myBike.Move();
+*/
+
+// Polymorphism
+Animal myDog = new Dog();
+Animal myCat = new Cat();
+myDog.Speak();
+myCat.Speak();
+
+
 Console.ReadKey();
+
 
 /* Objects */
 class Human
@@ -159,11 +175,9 @@ class Human
         this.age = age;
         population++;
     }
-
     public String name;
     public int age;
     public static int population = 0;
-
     public void Eat()
     {
         Console.WriteLine(name + " is eating.");
@@ -175,6 +189,62 @@ class Human
     }
 }
 
+class Developer : Human
+{
+    public Developer(String name, int age) : base(name, age)
+    {
+
+    }
+   
+    public void Code()
+    {
+        Console.WriteLine(name + " is coding.");
+    }
+}
+
+interface IMovable
+{
+    void Move();
+}
+
+class Car : IMovable
+{
+    public void Move()
+    {
+        Console.WriteLine("The car is moving.");
+    }
+}
+
+class Bicycle : IMovable
+{
+    public void Move()
+    {
+        Console.WriteLine("The bicycle is moving.");
+    }
+}
+
+// Polymorphism
+class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("The animal makes a sound.");
+    }
+}
+class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("The dog barks.");
+    }
+}
+class Cat : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("The cat meows.");
+    }
+}
 
 
 
