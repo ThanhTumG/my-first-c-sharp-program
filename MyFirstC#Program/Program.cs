@@ -151,11 +151,50 @@ myCar.Move();
 myBike.Move();
 */
 
-// Polymorphism
+/* Polymorphism 
 Animal myDog = new Dog();
 Animal myCat = new Cat();
 myDog.Speak();
 myCat.Speak();
+*/
+
+/* List 
+List<String> food = new List<string>();
+
+food.Add("Pizza");
+food.Add("Hamburger");
+food.Add("Hotdog");
+
+//food.Remove("Pizza");
+//Console.WriteLine(food.IndexOf("Pizza"));
+//Console.WriteLine(food.LastIndexOf("Hotdog"));
+//Console.WriteLine(food.Contains("Hamburger"));
+//food.Sort();
+//food.Reverse();
+
+String[] foodArray = food.ToArray();
+food.Clear();
+
+foreach (String f in foodArray)
+{
+    Console.WriteLine(f);
+}
+*/
+
+/* List of Objects 
+List<Human> humans = new List<Human>();
+
+humans.Add(new Human("Alice", 30));
+humans.Add(new Developer("Bob", 25));
+foreach (Human h in humans)
+{
+    Console.WriteLine(h.ToString());
+}
+*/
+
+Leopard leo = new Leopard(80);
+leo.Speed = -1;
+Console.WriteLine("Leopard speed: " + leo.Speed);
 
 
 Console.ReadKey();
@@ -164,6 +203,9 @@ Console.ReadKey();
 /* Objects */
 class Human
 {
+    public String name;
+    public int age;
+    public static int population = 0;
     public Human () {         
         name = "Unknown";
         age = 0;
@@ -175,9 +217,6 @@ class Human
         this.age = age;
         population++;
     }
-    public String name;
-    public int age;
-    public static int population = 0;
     public void Eat()
     {
         Console.WriteLine(name + " is eating.");
@@ -186,6 +225,11 @@ class Human
     public void Sleep ()
     {
         Console.WriteLine(name + " is sleeping.");
+    }
+
+    public override string ToString()
+    {
+        return this.name;
     }
 }
 
@@ -246,5 +290,30 @@ class Cat : Animal
     }
 }
 
+// Encapsulation
 
+class Leopard
+{
+    private int speed;
+
+    public Leopard (int speed)
+    {
+        Speed = speed;
+    }
+
+    public int Speed
+    {
+        get { return speed; }
+        set
+        {
+            if (value < 0)
+            {
+                speed = 0;
+            } else
+            {
+                speed = value;
+            }
+        }
+    }
+}
 
